@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img">
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050816" />
+      <stop offset="55%" stop-color="#0B1030" />
+      <stop offset="100%" stop-color="#160B3A" />
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4FA9FF" />
+      <stop offset="100%" stop-color="#6C2BFB" />
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02" />
+    </linearGradient>
+    <radialGradient id="orbBlue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0A84FF" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#0A84FF" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="orbViolet" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6C2BFB" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#6C2BFB" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="1.6" cy="1.6" r="1.6" fill="#4FA9FF" fill-opacity="0.16" />
+    </pattern>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" />
+    </filter>
+  </defs>
+
+  <rect width="640" height="360" fill="url(#bg)" />
+  <rect width="640" height="360" fill="url(#dots)" />
+  <circle cx="140" cy="280" r="150" fill="url(#orbBlue)" />
+    <circle cx="500" cy="90" r="170" fill="url(#orbViolet)" />
+<g transform="translate(150 150)">
+      <path d="M -52 -36 h 24 l 22 92 h 92 l 20 -64 h -116" stroke="url(#stroke)" stroke-width="3"
+        fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="4" cy="72" r="11" fill="none" stroke="#4FA9FF" stroke-width="2.6" />
+      <circle cx="70" cy="72" r="11" fill="none" stroke="#4FA9FF" stroke-width="2.6" />
+    </g>
+<path d="M 268 150 q 86 -92 178 -8" stroke="#C084FC" stroke-width="2.4" fill="none"
+      stroke-dasharray="8 9" stroke-linecap="round" />
+     <path d="M 440 132 l 10 18 l -20 4 z" fill="#C084FC" />
+<g>
+    <rect x="392" y="170" width="150" height="68" rx="14"
+      fill="url(#glass)" stroke="#C084FC" stroke-opacity="0.5" stroke-width="1.5" />
+    <path d="M 526 238 l 0 14 l -16 -14 z" fill="#C084FC" fill-opacity="0.10" stroke="#C084FC" stroke-opacity="0.5" stroke-width="1.5" />
+    <rect x="406" y="184" width="99" height="5" rx="2.5"
+      fill="#C084FC" fill-opacity="0.42" /><rect x="406" y="196" width="99" height="5" rx="2.5"
+      fill="#C084FC" fill-opacity="0.42" /><rect x="406" y="208" width="63" height="5" rx="2.5"
+      fill="#C084FC" fill-opacity="0.42" />
+  </g>
+<g>
+    <circle cx="268" cy="150" r="15.600000000000001" fill="#4FA9FF" fill-opacity="0.14" filter="url(#soft)" />
+    <circle cx="268" cy="150" r="6" fill="none" stroke="#4FA9FF" stroke-width="2" />
+    <circle cx="268" cy="150" r="2.3076923076923075" fill="#4FA9FF" />
+  </g>
+<g>
+    <circle cx="356" cy="96" r="15.600000000000001" fill="#C084FC" fill-opacity="0.14" filter="url(#soft)" />
+    <circle cx="356" cy="96" r="6" fill="none" stroke="#C084FC" stroke-width="2" />
+    <circle cx="356" cy="96" r="2.3076923076923075" fill="#C084FC" />
+  </g>
+<rect x="100" y="268" width="120" height="5" rx="2.5" fill="#4FA9FF" fill-opacity="0.3" />
+<rect x="100" y="284" width="72" height="5" rx="2.5" fill="#4FA9FF" fill-opacity="0.18" />
+</svg>

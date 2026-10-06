@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img">
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050816" />
+      <stop offset="55%" stop-color="#0B1030" />
+      <stop offset="100%" stop-color="#160B3A" />
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4FA9FF" />
+      <stop offset="100%" stop-color="#6C2BFB" />
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02" />
+    </linearGradient>
+    <radialGradient id="orbBlue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0A84FF" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#0A84FF" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="orbViolet" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6C2BFB" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#6C2BFB" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="1.6" cy="1.6" r="1.6" fill="#4FA9FF" fill-opacity="0.16" />
+    </pattern>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" />
+    </filter>
+  </defs>
+
+  <rect width="640" height="360" fill="url(#bg)" />
+  <rect width="640" height="360" fill="url(#dots)" />
+  <circle cx="140" cy="100" r="160" fill="url(#orbBlue)" />
+    <circle cx="500" cy="300" r="170" fill="url(#orbViolet)" />
+<rect x="78" y="56" width="200" height="248" rx="26" fill="url(#glass)" stroke="#4FA9FF" stroke-opacity="0.45" stroke-width="2" />
+     <rect x="118" y="68" width="60" height="8" rx="4" fill="#4FA9FF" fill-opacity="0.4" />
+<g>
+    <rect x="98" y="98" width="128" height="46" rx="14"
+      fill="url(#glass)" stroke="#4FA9FF" stroke-opacity="0.5" stroke-width="1.5" />
+    <path d="M 114 144 l 0 14 l 16 -14 z" fill="#4FA9FF" fill-opacity="0.10" stroke="#4FA9FF" stroke-opacity="0.5" stroke-width="1.5" />
+    <rect x="112" y="112" width="84.48" height="5" rx="2.5"
+      fill="#4FA9FF" fill-opacity="0.42" /><rect x="112" y="124" width="53.76" height="5" rx="2.5"
+      fill="#4FA9FF" fill-opacity="0.42" />
+  </g>
+<g>
+    <rect x="132" y="160" width="128" height="46" rx="14"
+      fill="url(#glass)" stroke="#C084FC" stroke-opacity="0.5" stroke-width="1.5" />
+    <path d="M 244 206 l 0 14 l -16 -14 z" fill="#C084FC" fill-opacity="0.10" stroke="#C084FC" stroke-opacity="0.5" stroke-width="1.5" />
+    <rect x="146" y="174" width="84.48" height="5" rx="2.5"
+      fill="#C084FC" fill-opacity="0.42" /><rect x="146" y="186" width="53.76" height="5" rx="2.5"
+      fill="#C084FC" fill-opacity="0.42" />
+  </g>
+<g>
+    <rect x="98" y="222" width="110" height="42" rx="14"
+      fill="url(#glass)" stroke="#4FA9FF" stroke-opacity="0.5" stroke-width="1.5" />
+    <path d="M 114 264 l 0 14 l 16 -14 z" fill="#4FA9FF" fill-opacity="0.10" stroke="#4FA9FF" stroke-opacity="0.5" stroke-width="1.5" />
+    <rect x="112" y="236" width="46.199999999999996" height="5" rx="2.5"
+      fill="#4FA9FF" fill-opacity="0.42" />
+  </g>
+<path d="M 292 180 Q 340 150 392 150" stroke="url(#stroke)" stroke-width="1.8"
+    fill="none" stroke-opacity="0.8" stroke-dasharray="7 8" stroke-linecap="round" />
+<g>
+      <rect x="400" y="104" width="136" height="110" rx="26" fill="url(#glass)" stroke="url(#stroke)" stroke-width="2.4" />
+      <circle cx="436" cy="152" r="9" fill="#4FA9FF" />
+      <circle cx="500" cy="152" r="9" fill="#4FA9FF" />
+      <path d="M 432 184 q 36 20 72 0" stroke="#C084FC" stroke-width="2.4" fill="none" stroke-linecap="round" />
+      <path d="M 468 104 v -22" stroke="#C084FC" stroke-width="2" />
+      <circle cx="468" cy="76" r="7" fill="none" stroke="#C084FC" stroke-width="2" />
+      <path d="M 400 136 h -16 v 42 h 16" stroke="#4FA9FF" stroke-opacity="0.6" stroke-width="2" fill="none" />
+      <path d="M 536 136 h 16 v 42 h -16" stroke="#4FA9FF" stroke-opacity="0.6" stroke-width="2" fill="none" />
+    </g>
+<g>
+    <circle cx="468" cy="252" r="18.2" fill="#C084FC" fill-opacity="0.14" filter="url(#soft)" />
+    <circle cx="468" cy="252" r="7" fill="none" stroke="#C084FC" stroke-width="2" />
+    <circle cx="468" cy="252" r="2.692307692307692" fill="#C084FC" />
+  </g>
+<path d="M 468 214 L 468 244" stroke="url(#stroke)" stroke-width="1.6"
+    stroke-opacity="0.75" fill="none" stroke-dasharray="6 7" stroke-linecap="round" />
+</svg>
