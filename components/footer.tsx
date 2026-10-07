@@ -25,7 +25,7 @@ export function Footer({
 
   return (
     <footer className="relative mt-24 border-t border-line/10 bg-surface/30">
-      <div className="container-x grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
+      <div className="container-x grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
         {/* Column 1 — brand */}
         <div className="flex flex-col gap-5">
           <Logo size={34} />
@@ -36,7 +36,7 @@ export function Footer({
             {content.t("footer.note") || L(settings.footer_note, locale)}
           </p>
           <LanguageSwitcher className="self-start" />
-          <BrandLockup size={28} boxed className="mt-1" />
+          <BrandLockup size={28} boxed compact className="mt-1" />
         </div>
 
         {/* Column 2 — navigation */}
