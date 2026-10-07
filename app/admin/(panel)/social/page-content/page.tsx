@@ -25,6 +25,7 @@ export default async function SocialPageContentPage() {
         .eq("scope", "social")
         .order("sort_order"),
     ]);
+
     services = (servicesResult.data ?? []) as SocialPageService[];
     steps = (stepsResult.data ?? []) as SocialPageStep[];
     faqs = (faqsResult.data ?? []) as Faq[];
@@ -37,6 +38,7 @@ export default async function SocialPageContentPage() {
           <h1 className="font-display text-2xl font-extrabold">
             Social page content
           </h1>
+
           <p className="mt-1.5 text-[13px] text-muted">
             Services, process steps and FAQ of /social-media. Headlines and
             button texts live in{" "}
@@ -49,6 +51,7 @@ export default async function SocialPageContentPage() {
             .
           </p>
         </div>
+
         <a
           href="/social-media"
           target="_blank"
@@ -67,7 +70,8 @@ export default async function SocialPageContentPage() {
         sub="The grid of what the team delivers every month."
         addLabel="Add service"
         rows={services.map((service) => ({ ...service }))}
-        rowTitle={(row) => L(row.title as SocialPageService["title"], "en")}
+        rowTitleField="title"
+        rowTitleLocale="en"
         defaults={{
           icon: "sparkles",
           title: { en: "", fr: "", ar: "" },
@@ -89,7 +93,8 @@ export default async function SocialPageContentPage() {
         sub="The numbered “how we work” timeline."
         addLabel="Add step"
         rows={steps.map((step) => ({ ...step }))}
-        rowTitle={(row) => L(row.title as SocialPageStep["title"], "en")}
+        rowTitleField="title"
+        rowTitleLocale="en"
         defaults={{
           step_no: 1,
           title: { en: "", fr: "", ar: "" },
@@ -111,7 +116,8 @@ export default async function SocialPageContentPage() {
         sub="Questions shown at the bottom of the social media page."
         addLabel="Add question"
         rows={faqs.map((faq) => ({ ...faq }))}
-        rowTitle={(row) => L(row.question as Faq["question"], "en")}
+        rowTitleField="question"
+        rowTitleLocale="en"
         defaults={{
           scope: "social",
           question: { en: "", fr: "", ar: "" },

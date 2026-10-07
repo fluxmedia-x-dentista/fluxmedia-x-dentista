@@ -39,8 +39,8 @@ export default async function AdminUsersPage() {
         addLabel="Add admin"
         sortable={false}
         rows={((data ?? []) as AdminUser[]).map((user) => ({ ...user }))}
-        rowTitle={(row) => String(row.email ?? "")}
-        rowBadge={(row) => String(row.role ?? "")}
+        rowTitleField="email"
+        rowBadgeField="role"
         defaults={{ user_id: "", email: "", role: "editor", active: true }}
         fields={[
           { name: "email", label: "Email", type: "text" },

@@ -1,7 +1,6 @@
 import { CollectionEditor } from "@/components/admin/collection-editor";
 import { createAdminSupabase } from "@/lib/supabase/admin";
 import type { FooterLink, NavigationItem } from "@/lib/types";
-import { L } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -36,8 +35,9 @@ export default async function AdminNavigationPage() {
         title="Header menu"
         addLabel="Add menu item"
         rows={items.map((item) => ({ ...item }))}
-        rowTitle={(row) => L(row.label as NavigationItem["label"], "en")}
-        rowBadge={(row) => String(row.href ?? "")}
+        rowTitleField="label"
+        rowTitleLocale="en"
+        rowBadgeField="href"
         defaults={{
           label: { en: "", fr: "", ar: "" },
           href: "/",
@@ -67,8 +67,9 @@ export default async function AdminNavigationPage() {
         sub="Group key decides the column: navigation, services or bottom."
         addLabel="Add footer link"
         rows={footerLinks.map((link) => ({ ...link }))}
-        rowTitle={(row) => L(row.label as FooterLink["label"], "en")}
-        rowBadge={(row) => String(row.group_key ?? "")}
+        rowTitleField="label"
+        rowTitleLocale="en"
+        rowBadgeField="group_key"
         defaults={{
           group_key: "navigation",
           label: { en: "", fr: "", ar: "" },

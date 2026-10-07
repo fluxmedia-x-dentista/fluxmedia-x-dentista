@@ -1,12 +1,14 @@
 import { CollectionEditor } from "@/components/admin/collection-editor";
+
 import { createAdminSupabase } from "@/lib/supabase/admin";
+
 import type { Category } from "@/lib/types";
-import { L } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminCategoriesPage() {
   const supabase = createAdminSupabase();
+
   const { data } = supabase
     ? await supabase.from("categories").select("*").order("sort_order")
     : { data: [] };
@@ -22,8 +24,9 @@ export default async function AdminCategoriesPage() {
       sub="Filter buttons on the automations page. The slug links an automation to its category."
       addLabel="Add category"
       rows={rows}
-      rowTitle={(row) => L(row.name as Category["name"], "en")}
-      rowBadge={(row) => String(row.slug ?? "")}
+      rowTitleField="name"
+      rowTitleLocale="en"
+      rowBadgeField="slug"
       defaults={{
         slug: "",
         name: { en: "", fr: "", ar: "" },

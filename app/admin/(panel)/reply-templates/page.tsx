@@ -29,8 +29,8 @@ export default async function AdminReplyTemplatesPage() {
         rows={((data ?? []) as ReplyTemplate[]).map((template) => ({
           ...template,
         }))}
-        rowTitle={(row) => String(row.name ?? "")}
-        rowBadge={(row) => String(row.service_type ?? "")}
+        rowTitleField="name"
+        rowBadgeField="service_type"
         defaults={{
           key: "",
           service_type: "general",

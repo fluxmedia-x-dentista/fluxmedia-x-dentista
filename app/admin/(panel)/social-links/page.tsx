@@ -6,6 +6,7 @@ export const dynamic = "force-dynamic";
 
 export default async function AdminSocialLinksPage() {
   const supabase = createAdminSupabase();
+
   const { data } = supabase
     ? await supabase.from("social_links").select("*").order("sort_order")
     : { data: [] };
@@ -17,8 +18,8 @@ export default async function AdminSocialLinksPage() {
       sub="Shown on /social, in the footer and on the contact page."
       addLabel="Add link"
       rows={((data ?? []) as SocialLink[]).map((link) => ({ ...link }))}
-      rowTitle={(row) => String(row.name ?? "")}
-      rowBadge={(row) => String(row.platform ?? "")}
+      rowTitleField="name"
+      rowBadgeField="platform"
       defaults={{
         platform: "instagram",
         name: "",

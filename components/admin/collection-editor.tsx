@@ -42,8 +42,9 @@ export function CollectionEditor({
   fields,
   rows: initialRows,
   defaults,
-  rowTitle,
-  rowBadge,
+  rowTitleField,
+  rowTitleLocale,
+  rowBadgeField,
   sortable = true,
   addLabel = "Add row",
   compact = false,
@@ -54,8 +55,9 @@ export function CollectionEditor({
   fields: CollectionField[];
   rows: CollectionRow[];
   defaults: Record<string, unknown>;
-  rowTitle: (row: CollectionRow) => string;
-  rowBadge?: (row: CollectionRow) => string | null;
+  rowTitleField?: string;
+  rowTitleLocale?: "en" | "fr" | "ar";
+  rowBadgeField?: string;
   sortable?: boolean;
   addLabel?: string;
   /** Renders as an embedded block (h2 + inline save) instead of a full page. */
@@ -66,6 +68,39 @@ export function CollectionEditor({
   const [dirty, setDirty] = useState<Set<string>>(new Set());
   const [open, setOpen] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+
+  function getRowTitle(row: CollectionRow) {
+    if (!rowTitleField) return "";
+
+    const value = row[rowTitleField];
+
+    if (value && typeof value === "object") {
+      const localized = value as Record<string, unknown>;
+      const locale = rowTitleLocale ?? "en";
+
+      return String(
+        localized[locale] ??
+          localized.en ??
+          localized.fr ??
+          localized.ar ??
+          "",
+      );
+    }
+
+    return String(value ?? "");
+  }
+
+  function getRowBadge(row: CollectionRow) {
+    if (!rowBadgeField) return null;
+
+    const value = row[rowBadgeField];
+
+    if (value === null || value === undefined || value === "") {
+      return null;
+    }
+
+    return String(value);
+  }
 
   function markDirty(id: string) {
     setDirty((current) => new Set(current).add(id));
@@ -181,7 +216,7 @@ export function CollectionEditor({
         <ul className="flex flex-col gap-3">
           {rows.map((row, index) => {
             const expanded = open === row.id;
-            const badge = rowBadge?.(row);
+            const badge = getRowBadge(row);
             return (
               <li key={row.id} className="card overflow-hidden">
                 <div className="flex items-center gap-3 px-4 py-3">
@@ -212,7 +247,7 @@ export function CollectionEditor({
                     className="flex flex-1 items-center gap-2 text-start"
                   >
                     <span className="font-display text-[14px] font-bold">
-                      {rowTitle(row) || "Untitled"}
+                      {getRowTitle(row) || "Untitled"}
                     </span>
                     {badge ? (
                       <span className="rounded-full bg-surface2 px-2 py-0.5 text-[11px] text-muted">
@@ -226,7 +261,7 @@ export function CollectionEditor({
 
                   <DeleteButton
                     label=""
-                    description={`"${rowTitle(row)}" will be removed from the website.`}
+                    description={`"${getRowTitle(row) || "Untitled"}" will be removed from the website.`}
                     onConfirm={() => remove(row)}
                   />
 

@@ -19,6 +19,7 @@ export default async function AdminClientsPage() {
         .order("created_at", { ascending: false }),
       supabase.from("social_packages").select("*").order("sort_order"),
     ]);
+
     clients = (clientsResult.data ?? []) as Client[];
     packages = (packagesResult.data ?? []) as SocialPackage[];
   }
@@ -31,8 +32,8 @@ export default async function AdminClientsPage() {
       addLabel="Add client"
       sortable={false}
       rows={clients.map((client) => ({ ...client }))}
-      rowTitle={(row) => String(row.name ?? "")}
-      rowBadge={(row) => String(row.status ?? "")}
+      rowTitleField="name"
+      rowBadgeField="status"
       defaults={{
         name: "",
         phone: "",

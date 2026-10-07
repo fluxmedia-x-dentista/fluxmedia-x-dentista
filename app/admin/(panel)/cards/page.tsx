@@ -113,25 +113,26 @@ export default async function AdminCardsPage() {
       </div>
 
       <CollectionEditor
-        compact
-        resource="faqs"
-        title="Cards FAQ"
-        sub="Questions shown at the bottom of the /cards page."
-        addLabel="Add question"
-        rows={faqs.map((faq) => ({ ...faq }))}
-        rowTitle={(row) => L(row.question as Faq["question"], "en")}
-        defaults={{
-          scope: "cards",
-          question: { en: "", fr: "", ar: "" },
-          answer: { en: "", fr: "", ar: "" },
-          visible: true,
-        }}
-        fields={[
-          { name: "question", label: "Question", type: "ml", full: true },
-          { name: "answer", label: "Answer", type: "mlarea" },
-          { name: "visible", label: "Visible", type: "bool" },
-        ]}
-      />
+  compact
+  resource="faqs"
+  title="Cards FAQ"
+  sub="Questions shown at the bottom of the /cards page."
+  addLabel="Add question"
+  rows={faqs.map((faq) => ({ ...faq }))}
+  rowTitleField="question"
+  rowTitleLocale="en"
+  defaults={{
+    scope: "cards",
+    question: { en: "", fr: "", ar: "" },
+    answer: { en: "", fr: "", ar: "" },
+    visible: true,
+  }}
+  fields={[
+    { name: "question", label: "Question", type: "ml", full: true },
+    { name: "answer", label: "Answer", type: "mlarea" },
+    { name: "visible", label: "Visible", type: "bool" },
+  ]}
+/>
     </div>
   );
 }
