@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Link from "next/link";
 
 import { FaqList } from "@/components/faq";
 import { PageHero } from "@/components/page-hero";
@@ -97,6 +98,13 @@ export default async function CardsPage() {
       ) : null}
 
       <section className="container-x pb-20 pt-4">
+        <div className="mb-8 rounded-2xl border border-brand/20 bg-surface/50 p-5 sm:flex sm:items-center sm:justify-between">
+          <div>
+            <h3 className="font-display font-bold">Looking for digital NFC cards?</h3>
+            <p className="mt-1 text-sm text-muted">Explore FLUXMEDIA\u2019s separate NFC product line.</p>
+          </div>
+          <Link href="/nfc-cards" className="btn-brand mt-4 inline-flex sm:mt-0">Explore FLUXMEDIA NFC cards</Link>
+        </div>
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl border border-dentista/25 bg-surface/60 p-8 text-center sm:p-12">
             <span className="glow-orb -start-10 -top-10 h-56 w-56 bg-dentista/20" />
