@@ -62,8 +62,7 @@ export function MediaLibrary({ assets: initial }: { assets: MediaAsset[] }) {
         <div>
           <h1 className="font-display text-2xl font-extrabold">Media</h1>
           <p className="mt-1.5 text-[13px] text-muted">
-            Images used across the website. PNG, JPG, WebP, SVG or GIF, up to 5
-            MB each.
+            Images and short demo videos. PNG, JPG, WebP, SVG or GIF up to 5 MB; MP4 or WebM up to 50 MB.
           </p>
         </div>
         <div>
@@ -71,7 +70,7 @@ export function MediaLibrary({ assets: initial }: { assets: MediaAsset[] }) {
             ref={inputRef}
             type="file"
             multiple
-            accept="image/png,image/jpeg,image/webp,image/svg+xml,image/gif"
+            accept="image/png,image/jpeg,image/webp,image/svg+xml,image/gif,video/mp4,video/webm"
             onChange={upload}
             className="hidden"
           />
@@ -86,24 +85,28 @@ export function MediaLibrary({ assets: initial }: { assets: MediaAsset[] }) {
             ) : (
               <Upload className="h-3.5 w-3.5" />
             )}
-            Upload images
+            Upload media
           </button>
         </div>
       </div>
 
       {assets.length === 0 ? (
-        <EmptyState text="No uploads yet. Images uploaded from any editor appear here too." />
+        <EmptyState text="No uploads yet. Images and videos uploaded from any editor appear here too." />
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {assets.map((asset) => (
             <figure key={asset.id} className="card overflow-hidden">
               <div className="aspect-video bg-surface2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={asset.url}
-                  alt={asset.alt ?? ""}
-                  className="h-full w-full object-cover"
-                />
+                {asset.kind.startsWith("video/") ? (
+                  <video src={asset.url} controls className="h-full w-full object-cover" />
+                ) : (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={asset.url}
+                    alt={asset.alt ?? ""}
+                    className="h-full w-full object-cover"
+                  />
+                )}
               </div>
               <figcaption className="p-3">
                 <p className="truncate text-[12.5px] font-medium">

@@ -64,6 +64,7 @@ export type ContentPage =
   | "home"
   | "about"
   | "cards"
+  | "nfc"
   | "automations"
   | "social"
   | "request-contact"

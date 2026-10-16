@@ -13,6 +13,7 @@ const PREVIEW_HREF: Partial<Record<ContentPage, string>> = {
   home: "/",
   about: "/about",
   cards: "/cards",
+  nfc: "/nfc-cards",
   automations: "/automations",
   social: "/social-media",
   "request-contact": "/request",
@@ -23,7 +24,8 @@ const PREVIEW_HREF: Partial<Record<ContentPage, string>> = {
 const PAGE_SUB: Partial<Record<ContentPage, string>> = {
   home: "Every word, image and button on the home page, plus the section order.",
   about: "The story, services and principles shown on /about.",
-  cards: "Hero, NFC steps, comparison table and FAQ intro of the cards page.",
+  cards: "DENTISTA product-page copy and section labels.",
+  nfc: "FLUXMEDIA NFC landing page copy, example destinations, video URL and process steps.",
   automations: "Headline, filters and detail-page labels for automations.",
   social: "Headline, process and CTA texts of the social media page.",
   "request-contact": "The three request choices and the contact page texts.",

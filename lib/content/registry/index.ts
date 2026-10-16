@@ -32,7 +32,8 @@ export const CONTENT_PAGES: {
 }[] = [
   { page: "home", title: "Home page", href: "/admin/pages/home" },
   { page: "about", title: "About page", href: "/admin/pages/about" },
-  { page: "cards", title: "Cards page", href: "/admin/pages/cards" },
+  { page: "cards", title: "DENTISTA products", href: "/admin/pages/cards" },
+  { page: "nfc", title: "FLUXMEDIA NFC Cards", href: "/admin/pages/nfc" },
   {
     page: "automations",
     title: "Automations page",

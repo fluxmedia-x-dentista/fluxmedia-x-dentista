@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
+import Link from "next/link";
 
-import { BrandLockup } from "@/components/brand-lockup";
-import { CardsBrowser } from "@/components/cards-browser";
 import { FaqList } from "@/components/faq";
 import { PageHero } from "@/components/page-hero";
-import { Icon, Reveal, SectionHead } from "@/components/ui";
+import { Reveal, SectionHead } from "@/components/ui";
 import { WhatsAppOrderButton } from "@/components/whatsapp-button";
 import { getContent } from "@/lib/content/get-content";
-import { getCardProducts, getFaqs } from "@/lib/data/catalog";
+import { getFaqs } from "@/lib/data/catalog";
 import { getSiteSettings } from "@/lib/data/site";
 import { getRequestLocale } from "@/lib/locale";
 import { L } from "@/lib/utils";
@@ -16,23 +14,19 @@ import { L } from "@/lib/utils";
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent(getRequestLocale());
   return {
-    title: content.t("cards.hero.title1"),
-    description: content.t("cards.hero.sub"),
+    title: content.t("cards.promo.hero.title1"),
+    description: content.t("cards.promo.hero.sub"),
   };
 }
 
 export default async function CardsPage() {
   const locale = getRequestLocale();
-  const [content, cards, faqs, settings] = await Promise.all([
+  const [content, faqs, settings] = await Promise.all([
     getContent(locale),
-    getCardProducts(),
     getFaqs("cards"),
     getSiteSettings(),
   ]);
-
-  const nfcSteps = content.list("cards.nfc.steps");
-  const compareRows = content.list("cards.compare.rows");
-  const orderSteps = content.list("cards.order.steps");
+  const products = content.list("cards.promo.items");
 
   return (
     <>
@@ -41,175 +35,83 @@ export default async function CardsPage() {
         image={content.img("cards.bg")}
         badge={content.t("cards.hero.badge")}
         accent="dentista"
-        title={
-          <>
-            {content.t("cards.hero.title1")}{" "}
-            <span className="text-dentista">
-              {content.t("cards.hero.title2")}
-            </span>
-          </>
-        }
-        sub={content.t("cards.hero.sub")}
+        title={<>{content.t("cards.promo.hero.title1")}{" "}<span className="text-dentista">{content.t("cards.promo.hero.title2")}</span></>}
+        sub={content.t("cards.promo.hero.sub")}
       >
-        <BrandLockup size={30} boxed className="mt-2" />
+        <div className="mt-3 inline-flex rounded-xl border border-dentista/25 bg-surface/70 px-4 py-2 text-sm font-semibold text-dentista">
+          DENTISTA · Dental promotional products
+        </div>
       </PageHero>
 
-      {/* Products */}
-      <section className="container-x py-12">
+      <section className="container-x py-14">
         <Reveal>
           <SectionHead
             align="start"
             accent="dentista"
-            title={content.t("cards.products.title")}
-            sub={content.t("cards.products.sub")}
+            title={content.t("cards.promo.section.title")}
+            sub={content.t("cards.promo.section.sub")}
           />
         </Reveal>
-        <div className="mt-10">
-          <Suspense fallback={null}>
-            <CardsBrowser cards={cards} phone={settings.whatsapp_number} />
-          </Suspense>
-        </div>
-      </section>
-
-      {/* How NFC works */}
-      <section className="relative py-16">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-grid opacity-50" />
-        <div className="container-x">
-          <Reveal>
-            <SectionHead
-              accent="dentista"
-              title={content.t("cards.nfc.title")}
-            />
-          </Reveal>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {nfcSteps.map((step, index) => (
-              <Reveal key={step.id} delay={index * 70}>
-                <div className="card h-full p-5">
-                  <span className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-dentista/15 text-dentista">
-                    <Icon
-                      name={["nfc", "globe", "users", "pen"][index] ?? "nfc"}
-                      className="h-4.5 w-4.5"
-                    />
-                  </span>
-                  <h3 className="font-display text-[15px] font-bold">
-                    {L(step.title, locale)}
-                  </h3>
-                  <p className="mt-2 text-[13px] leading-relaxed text-muted">
-                    {L(step.text, locale)}
-                  </p>
-                </div>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {products.map((product, index) => {
+            const imageUrl = L(product.extra, locale).trim();
+            return (
+              <Reveal key={product.id} delay={index * 70}>
+                <article className="card flex h-full flex-col overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+                  <div className="flex aspect-[4/3] items-center justify-center overflow-hidden border-b border-line/15 bg-surface2/50">
+                    {imageUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={imageUrl} alt={L(product.title, locale)} className="h-full w-full object-cover" />
+                    ) : (
+                      <div className="px-8 text-center">
+                        <span className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-dentista/10 text-dentista text-xl">✦</span>
+                        <p className="text-xs text-muted">Product image can be added in Admin → Pages → DENTISTA products</p>
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="font-display text-lg font-bold">{L(product.title, locale)}</h3>
+                    <p className="mt-3 flex-1 whitespace-pre-line text-sm leading-relaxed text-muted">{L(product.text, locale)}</p>
+                    <div className="mt-6">
+                      <WhatsAppOrderButton
+                        payload={{ kind: "general" }}
+                        phone={settings.whatsapp_number}
+                        variant="dentista"
+                        label="Ask about this product"
+                        className="w-full justify-center"
+                      />
+                    </div>
+                  </div>
+                </article>
               </Reveal>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* Comparison */}
-      <section className="container-x py-16">
-        <Reveal>
-          <SectionHead
-            accent="dentista"
-            title={content.t("cards.compare.title")}
-          />
-        </Reveal>
-        <Reveal>
-          <div className="mt-10 overflow-hidden rounded-2xl border border-line/15">
-            <table className="w-full text-start text-[13.5px]">
-              <thead className="bg-surface2/60">
-                <tr>
-                  <th className="px-5 py-3.5 text-start font-semibold text-muted" />
-                  <th className="px-5 py-3.5 text-start font-display font-bold">
-                    {content.t("ui.regular")}
-                  </th>
-                  <th className="px-5 py-3.5 text-start font-display font-bold text-dentista">
-                    {content.t("ui.nfc")}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {compareRows.map((row, index) => (
-                  <tr
-                    key={row.id}
-                    className={index % 2 === 0 ? "bg-surface/40" : ""}
-                  >
-                    <th className="px-5 py-3.5 text-start font-semibold text-muted">
-                      {L(row.title, locale)}
-                    </th>
-                    <td className="px-5 py-3.5 text-ink/90">
-                      {L(row.text, locale)}
-                    </td>
-                    <td className="px-5 py-3.5 text-ink/90">
-                      {L(row.extra, locale)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* Ordering process */}
-      <section className="container-x py-16">
-        <Reveal>
-          <SectionHead
-            accent="dentista"
-            title={content.t("cards.order.title")}
-          />
-        </Reveal>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {orderSteps.map((step, index) => (
-            <Reveal key={step.id} delay={index * 70}>
-              <div className="card h-full p-5">
-                <span className="font-display text-3xl font-extrabold text-dentista/30">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-2 font-display text-[15px] font-bold">
-                  {L(step.title, locale)}
-                </h3>
-                <p className="mt-2 text-[13px] leading-relaxed text-muted">
-                  {L(step.text, locale)}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* FAQ */}
       {faqs.length > 0 ? (
-        <section className="container-x py-16">
-          <Reveal>
-            <SectionHead
-              accent="dentista"
-              title={content.t("cards.faq.title")}
-            />
-          </Reveal>
-          <div className="mt-10">
-            <FaqList faqs={faqs} />
-          </div>
+        <section className="container-x py-14">
+          <Reveal><SectionHead accent="dentista" title={content.t("cards.faq.title")} /></Reveal>
+          <div className="mt-8"><FaqList faqs={faqs} /></div>
         </section>
       ) : null}
 
-      {/* Final CTA */}
-      <section className="container-x pb-24 pt-8">
+      <section className="container-x pb-20 pt-4">
+        <div className="mb-8 rounded-2xl border border-brand/20 bg-surface/50 p-5 sm:flex sm:items-center sm:justify-between">
+          <div>
+            <h3 className="font-display font-bold">Looking for digital NFC cards?</h3>
+            <p className="mt-1 text-sm text-muted">Explore FLUXMEDIA\u2019s separate NFC product line.</p>
+          </div>
+          <Link href="/nfc-cards" className="btn-brand mt-4 inline-flex sm:mt-0">Explore FLUXMEDIA NFC cards</Link>
+        </div>
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl border border-dentista/25 bg-surface/60 p-10 text-center sm:p-14">
-            <span className="glow-orb -start-10 -top-10 h-64 w-64 bg-dentista/25" />
-            <span className="glow-orb -end-10 -bottom-10 h-64 w-64 bg-violet/25" />
-            <h2 className="section-title mx-auto max-w-2xl text-balance">
-              {content.t("cards.final.title")}
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted">
-              {content.t("cards.final.sub")}
-            </p>
-            <div className="mt-8 flex justify-center">
-              <WhatsAppOrderButton
-                payload={{ kind: "general" }}
-                phone={settings.whatsapp_number}
-                variant="dentista"
-                label={content.t("ui.chat_whatsapp")}
-              />
+          <div className="relative overflow-hidden rounded-3xl border border-dentista/25 bg-surface/60 p-8 text-center sm:p-12">
+            <span className="glow-orb -start-10 -top-10 h-56 w-56 bg-dentista/20" />
+            <h2 className="section-title mx-auto max-w-2xl">Make your clinic memorable.</h2>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted">Personalised promotional mirrors and QR products help patients remember your clinic and find you again.</p>
+            <div className="mt-7 flex flex-wrap justify-center gap-3">
+              <WhatsAppOrderButton payload={{ kind: "general" }} phone={settings.whatsapp_number} variant="dentista" label="Discuss a custom order" />
+              <Link href="/nfc-cards" className="btn-ghost">Explore FLUXMEDIA NFC cards</Link>
             </div>
           </div>
         </Reveal>
