@@ -699,6 +699,12 @@ export const pageEntries: ContentEntry[] = [
   ),
 
 
+
+  cardsBody.text("cards.promo.hero.title1", "Dental products headline", ml("Small Gifts.", "Petits cadeaux.", "هدايا صغيرة.")),
+  cardsBody.text("cards.promo.hero.title2", "Dental products headline accent", ml("Lasting Impressions.", "Impressions durables.", "أثر يدوم.")),
+  cardsBody.area("cards.promo.hero.sub", "Dental products subtitle", ml("Personalised promotional mirrors and QR-code products that keep your dental clinic easy to remember and easy to find.", "Des miroirs promotionnels personnalisés et des produits avec QR code pour que votre cabinet dentaire reste facile à retenir et à retrouver.", "مرايا ترويجية مخصصة ومنتجات برمز QR تجعل عيادتك سهلة التذكر والوصول.")),
+  cardsBody.text("cards.promo.section.title", "Dental products section title", ml("Made for dental clinics", "Pensé pour les cabinets dentaires", "مصممة لعيادات الأسنان")),
+  cardsBody.area("cards.promo.section.sub", "Dental products section subtitle", ml("Useful, personalised giveaways that carry your clinic identity beyond the appointment.", "Des objets utiles et personnalisés qui prolongent l’identité de votre cabinet après le rendez-vous.", "هدايا مفيدة ومخصصة تحمل هوية عيادتك حتى بعد الموعد.")),
   cardsBody.list("cards.promo.items", "Dental promotional products", [
     { title: ml("Personalised dental mirrors", "Miroirs dentaires personnalisés", "مرايا أسنان مخصصة"), text: ml("Compact promotional mirrors customised with your clinic name and visual identity. Price: ask us on WhatsApp.", "Petits miroirs promotionnels personnalisés avec le nom et l’identité visuelle de votre cabinet. Prix : contactez-nous sur WhatsApp.", "مرايا ترويجية صغيرة مخصصة باسم عيادتك وهويتها البصرية. السعر: تواصل معنا عبر واتساب."), extra: ml("", "", "") },
     { title: ml("Business-card mirrors with QR code", "Miroirs format carte avec QR code", "مرايا بحجم بطاقة الأعمال مع رمز QR"), text: ml("A practical giveaway that combines a mirror with a QR code linking to your clinic, booking page or social profiles. Price: ask us on WhatsApp.", "Un objet utile qui associe un miroir à un QR code vers votre cabinet, vos rendez-vous ou vos réseaux sociaux. Prix : contactez-nous sur WhatsApp.", "هدية عملية تجمع المرآة مع رمز QR يربط بعيادتك أو صفحة الحجز أو حساباتك الاجتماعية. السعر: تواصل معنا عبر واتساب."), extra: ml("", "", "") },
