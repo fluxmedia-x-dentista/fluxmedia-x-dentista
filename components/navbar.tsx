@@ -75,7 +75,7 @@ export function Navbar({
                     : "text-muted hover:text-ink",
                 )}
               >
-                {item.href === "/cards" ? (
+                {item.href === "/dentista" ? (
                   <span className="h-1.5 w-1.5 rounded-full bg-dentista shadow-glow-dentista" />
                 ) : null}
                 {item.label}
@@ -131,7 +131,7 @@ export function Navbar({
                   isActive(item.href) ? "text-ink" : "text-muted",
                 )}
               >
-                {item.href === "/cards" ? (
+                {item.href === "/dentista" ? (
                   <span className="h-2 w-2 rounded-full bg-dentista shadow-glow-dentista" />
                 ) : null}
                 {item.label}
