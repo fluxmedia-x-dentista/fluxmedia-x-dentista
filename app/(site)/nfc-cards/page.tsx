@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 import { PageHero } from "@/components/page-hero";
 import { Icon, Reveal, SectionHead } from "@/components/ui";
@@ -51,7 +52,7 @@ export default async function NfcCardsPage() {
           <SectionHead align="start" title="FLUXMEDIA NFC Cards" sub="A smarter way to share your professional identity." />
         </Reveal>
         <div className="mt-8">
-          <CardsBrowser cards={cards} phone={settings.whatsapp_number} />
+          <Suspense fallback={null}><CardsBrowser cards={cards} phone={settings.whatsapp_number} /></Suspense>
         </div>
       </section>
 
