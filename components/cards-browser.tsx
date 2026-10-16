@@ -175,10 +175,15 @@ export function CardsBrowser({
     [cards, filter],
   );
 
+  const availableTypes = new Set(cards.map((card) => card.type));
   const tabs: { id: Filter; label: string }[] = [
     { id: "all", label: t("ui.all", "All") },
-    { id: "regular", label: t("ui.regular", "Regular") },
-    { id: "nfc", label: t("ui.nfc", "NFC") },
+    ...(availableTypes.has("regular")
+      ? [{ id: "regular" as const, label: t("ui.regular", "Regular") }]
+      : []),
+    ...(availableTypes.has("nfc")
+      ? [{ id: "nfc" as const, label: t("ui.nfc", "NFC") }]
+      : []),
   ];
 
   return (
