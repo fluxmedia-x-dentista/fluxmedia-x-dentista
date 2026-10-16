@@ -635,12 +635,16 @@ export function ListEditor({
   fields = ["title", "text"],
   labels = { title: "Title", text: "Text", extra: "Extra" },
   addLabel = "Add row",
+  extraMode = "multilingual",
+  extraPlaceholder,
 }: {
   items: ContentListItem[];
   onChange: (items: ContentListItem[]) => void;
   fields?: ("title" | "text" | "extra")[];
   labels?: { title?: string; text?: string; extra?: string };
   addLabel?: string;
+  extraMode?: "multilingual" | "url";
+  extraPlaceholder?: string;
 }) {
   const update = (index: number, patch: Partial<ContentListItem>) => {
     const next = [...items];
@@ -713,11 +717,24 @@ export function ListEditor({
               />
             ) : null}
             {fields.includes("extra") ? (
-              <MLInput
-                label={labels.extra}
-                value={item.extra}
-                onChange={(extra) => update(index, { extra })}
-              />
+              extraMode === "url" ? (
+                <Input
+                  label={labels.extra}
+                  type="url"
+                  placeholder={extraPlaceholder}
+                  hint="Use a public image URL. Upload the image in Admin → Media first if needed."
+                  value={item.extra?.en ?? ""}
+                  onChange={(url) =>
+                    update(index, { extra: { en: url, fr: url, ar: url } })
+                  }
+                />
+              ) : (
+                <MLInput
+                  label={labels.extra}
+                  value={item.extra}
+                  onChange={(extra) => update(index, { extra })}
+                />
+              )
             ) : null}
           </div>
         </div>
