@@ -711,7 +711,7 @@ export const pageEntries: ContentEntry[] = [
     { title: ml("Portfolio or website", "Portfolio ou site web", "معرض أعمال أو موقع"), text: ml("Send people directly to your work, services or landing page.", "Dirigez vos contacts vers vos réalisations, services ou page de présentation.", "وجّه عملاءك مباشرة إلى أعمالك أو خدماتك أو صفحة الهبوط."), extra: ml("", "", "") },
     { title: ml("Booking and reviews", "Réservation et avis", "الحجز والتقييمات"), text: ml("Make it easy to book an appointment or leave a review.", "Facilitez la prise de rendez-vous ou le dépôt d’un avis.", "سهّل حجز المواعيد أو ترك التقييمات."), extra: ml("", "", "") }
   ], "Paste a public profile URL in Extra to show an Open example link."),
-  nfcBody.text("nfc.video.url", "How-it-works video URL", ""),
+  nfcBody.text("nfc.video.url", "How-it-works video URL", ml("", "", "")),
   nfcBody.text("nfc.video.title", "Video section title", ml("See how it works", "Découvrez comment ça marche", "شاهد كيف تعمل")),
   nfcBody.area("nfc.video.sub", "Video section subtitle", ml("Tap the card and share your details instantly.", "Touchez la carte et partagez vos coordonnées instantanément.", "المس البطاقة وشارك بياناتك فوراً.")),
   nfcBody.text("nfc.process.title", "How it works title", ml("Simple by design", "Simple par nature", "بسيطة من الأساس")),
