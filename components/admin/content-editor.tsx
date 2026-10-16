@@ -42,6 +42,19 @@ function Field({
 }) {
   switch (entry.kind) {
     case "text":
+      if (entry.key === "nfc.video.url") {
+        const video = (value as ML) ?? EMPTY_ML;
+        return (
+          <Input
+            label={entry.label}
+            type="url"
+            placeholder="https://www.youtube.com/watch?v=... or a public .mp4/.webm URL"
+            hint="Paste one public video URL. You only need to enter it once; it will be used for all languages."
+            value={video.en || video.fr || video.ar}
+            onChange={(url) => onChange({ en: url, fr: url, ar: url })}
+          />
+        );
+      }
       return (
         <MLInput
           label={entry.label}
@@ -123,6 +136,14 @@ function Field({
             items={(value as ContentListItem[]) ?? []}
             onChange={(items) => onChange(items)}
             fields={["title", "text", "extra"]}
+            labels={
+              entry.key === "nfc.examples.items"
+                ? { title: "Example title", text: "Description", extra: "Image URL" }
+                : undefined
+            }
+            extraMode={entry.key === "nfc.examples.items" ? "url" : "multilingual"}
+            extraPlaceholder={entry.key === "nfc.examples.items" ? "https://your-domain.com/example-image.jpg" : undefined}
+            addLabel={entry.key === "nfc.examples.items" ? "Add example" : "Add row"}
           />
         </div>
       );
