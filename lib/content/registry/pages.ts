@@ -8,6 +8,8 @@ const cardsHero = section("cards", "Hero");
 const cardsBody = section("cards", "Sections");
 const nfcHero = section("nfc", "Hero");
 const nfcBody = section("nfc", "Examples & video");
+const nfcHero = section("nfc", "Hero");
+const nfcBody = section("nfc", "Examples & video");
 const about = section("about", "About page");
 const request = section("request-contact", "Request hub");
 const contact = section("request-contact", "Contact page");
@@ -695,4 +697,28 @@ export const pageEntries: ContentEntry[] = [
       "كل قنوات FLUXMEDIA و DENTISTA الرسمية في مكان واحد.",
     ),
   ),
+
+  /* ------------------------- FLUXMEDIA NFC page -------------------------- */
+  nfcHero.text("nfc.hero.badge", "Badge", ml("FLUXMEDIA NFC Cards", "Cartes NFC FLUXMEDIA", "بطاقات FLUXMEDIA NFC")),
+  nfcHero.text("nfc.hero.title1", "Headline line 1", ml("One Tap.", "Une seule touche.", "لمسة واحدة.")),
+  nfcHero.text("nfc.hero.title2", "Headline line 2", ml("Your Whole Business.", "Toute votre activité.", "نشاطك بالكامل.")),
+  nfcHero.area("nfc.hero.sub", "Subtitle", ml("A premium NFC card that opens your digital profile, portfolio, booking page or website with a simple tap — no app required.", "Une carte NFC premium qui ouvre votre profil numérique, portfolio, page de réservation ou site web en un geste — sans application.", "بطاقة NFC فاخرة تفتح ملفك الرقمي أو معرض أعمالك أو صفحة الحجز أو موقعك بلمسة واحدة — دون تطبيق.")),
+  nfcHero.image("nfc.bg", "Hero background", "/images/backgrounds/cards.svg", ml("Premium NFC business card", "Carte de visite NFC premium", "بطاقة أعمال NFC فاخرة"), 60),
+  nfcBody.text("nfc.examples.title", "Examples section title", ml("One card. Many possibilities.", "Une carte, de nombreuses possibilités.", "بطاقة واحدة، إمكانيات متعددة.")),
+  nfcBody.area("nfc.examples.sub", "Examples section subtitle", ml("Show visitors the kind of digital destination your NFC card can open.", "Montrez les destinations numériques accessibles avec votre carte NFC.", "اعرض الوجهات الرقمية التي تفتحها بطاقة NFC.")),
+  nfcBody.list("nfc.examples.items", "Digital profile / website examples", [
+    { title: ml("Digital business profile", "Profil professionnel numérique", "ملف مهني رقمي"), text: ml("Contact details, WhatsApp, email and social links in one place.", "Coordonnées, WhatsApp, e-mail et réseaux sociaux au même endroit.", "بيانات التواصل وواتساب والبريد وروابط التواصل في مكان واحد."), extra: ml("", "", "") },
+    { title: ml("Portfolio or website", "Portfolio ou site web", "معرض أعمال أو موقع"), text: ml("Send people directly to your work, services or landing page.", "Dirigez vos contacts vers vos réalisations, services ou page de présentation.", "وجّه عملاءك مباشرة إلى أعمالك أو خدماتك أو صفحة الهبوط."), extra: ml("", "", "") },
+    { title: ml("Booking and reviews", "Réservation et avis", "الحجز والتقييمات"), text: ml("Make it easy to book an appointment or leave a review.", "Facilitez la prise de rendez-vous ou le dépôt d’un avis.", "سهّل حجز المواعيد أو ترك التقييمات."), extra: ml("", "", "") }
+  ], "Paste a public profile URL in Extra to show an Open example link."),
+  nfcBody.text("nfc.video.url", "How-it-works video URL", ""),
+  nfcBody.text("nfc.video.title", "Video section title", ml("See how it works", "Découvrez comment ça marche", "شاهد كيف تعمل")),
+  nfcBody.area("nfc.video.sub", "Video section subtitle", ml("Tap the card and share your details instantly.", "Touchez la carte et partagez vos coordonnées instantanément.", "المس البطاقة وشارك بياناتك فوراً.")),
+  nfcBody.text("nfc.process.title", "How it works title", ml("Simple by design", "Simple par nature", "بسيطة من الأساس")),
+  nfcBody.list("nfc.process.steps", "How it works steps", [
+    { title: ml("Choose your card", "Choisissez votre carte", "اختر بطاقتك"), text: ml("Select the finish and share your branding.", "Choisissez la finition et partagez votre identité visuelle.", "اختر الخامة وشارك هويتك البصرية."), extra: ml("", "", "") },
+    { title: ml("Set your destination", "Définissez la destination", "حدد الوجهة"), text: ml("Choose the profile, website or link the card should open.", "Choisissez le profil, le site ou le lien à ouvrir.", "اختر الملف أو الموقع أو الرابط الذي ستفتحه البطاقة."), extra: ml("", "", "") },
+    { title: ml("Tap and connect", "Touchez et connectez", "المس واتصل"), text: ml("A compatible phone opens your link; no app is needed.", "Un téléphone compatible ouvre votre lien, sans application.", "يفتح هاتف متوافق الرابط دون تطبيق."), extra: ml("", "", "") }
+  ]),
+
 ];
