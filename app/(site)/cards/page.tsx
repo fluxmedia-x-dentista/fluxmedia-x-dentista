@@ -14,8 +14,8 @@ import { L } from "@/lib/utils";
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent(getRequestLocale());
   return {
-    title: content.t("cards.hero.title1"),
-    description: content.t("cards.hero.sub"),
+    title: content.t("cards.promo.hero.title1"),
+    description: content.t("cards.promo.hero.sub"),
   };
 }
 
@@ -35,8 +35,8 @@ export default async function CardsPage() {
         image={content.img("cards.bg")}
         badge={content.t("cards.hero.badge")}
         accent="dentista"
-        title={<>{content.t("cards.hero.title1")}{" "}<span className="text-dentista">{content.t("cards.hero.title2")}</span></>}
-        sub={content.t("cards.hero.sub")}
+        title={<>{content.t("cards.promo.hero.title1")}{" "}<span className="text-dentista">{content.t("cards.promo.hero.title2")}</span></>}
+        sub={content.t("cards.promo.hero.sub")}
       >
         <div className="mt-3 inline-flex rounded-xl border border-dentista/25 bg-surface/70 px-4 py-2 text-sm font-semibold text-dentista">
           DENTISTA · Dental promotional products
@@ -48,8 +48,8 @@ export default async function CardsPage() {
           <SectionHead
             align="start"
             accent="dentista"
-            title={content.t("cards.products.title")}
-            sub={content.t("cards.products.sub")}
+            title={content.t("cards.promo.section.title")}
+            sub={content.t("cards.promo.section.sub")}
           />
         </Reveal>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
