@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import { PageHero } from "@/components/page-hero";
-import { Icon, Reveal, SectionHead } from "@/components/ui";
+import { Reveal, SectionHead } from "@/components/ui";
 import { WhatsAppOrderButton } from "@/components/whatsapp-button";
 import { CardsBrowser } from "@/components/cards-browser";
 import { getContent } from "@/lib/content/get-content";
@@ -29,7 +29,17 @@ export default async function NfcCardsPage() {
   const cards = allCards.filter((card) => card.type === "nfc");
   const examples = content.list("nfc.examples.items");
   const steps = content.list("nfc.process.steps");
-  const videoUrl = content.t("nfc.video.url").trim();
+  const videoUrl = content.t("nfc.video.url").trim() || "https://www.youtube.com/watch?v=yF30GpgPs_U";
+  const youtubeVideoId = videoUrl.includes("youtube.com/watch?v=")
+    ? videoUrl.split("v=")[1]?.split("&")[0]
+    : videoUrl.includes("youtu.be/")
+      ? videoUrl.split("youtu.be/")[1]?.split("?")[0]
+      : "";
+  const exampleImages = [
+    "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=1200&q=85",
+  ];
 
   return (
     <>
@@ -65,17 +75,16 @@ export default async function NfcCardsPage() {
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {examples.map((item, index) => (
               <Reveal key={item.id} delay={index * 70}>
-                <article className="card h-full p-6 transition-transform duration-300 hover:-translate-y-1">
-                  <span className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
-                    <Icon name={["contact", "globe", "calendar-check"][index] ?? "nfc"} className="h-5 w-5" />
-                  </span>
+                <article className="card h-full overflow-hidden p-0 transition-transform duration-300 hover:-translate-y-1">
+                  {L(item.extra, locale).trim() ? (
+                    <img src={L(item.extra, locale).trim() || exampleImages[index % exampleImages.length]} alt={L(item.title, locale)} loading="lazy" className="aspect-[16/10] w-full object-cover" />
+                  ) : (
+                    <div className="flex aspect-[16/10] items-center justify-center bg-brand/10 text-sm font-semibold text-brand">FLUXMEDIA NFC</div>
+                  )}
+                  <div className="p-6">
                   <h3 className="font-display text-lg font-bold">{L(item.title, locale)}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{L(item.text, locale)}</p>
-                  {L(item.extra, locale).trim() ? (
-                    <a href={L(item.extra, locale)} target="_blank" rel="noreferrer" className="mt-5 inline-flex text-sm font-semibold text-brand hover:underline">
-                      Open example ↗
-                    </a>
-                  ) : null}
+                  </div>
                 </article>
               </Reveal>
             ))}
@@ -100,20 +109,7 @@ export default async function NfcCardsPage() {
         </div>
       </section>
 
-      {videoUrl ? (
-        <section className="container-x pb-20">
-          <Reveal>
-            <div className="grid items-center gap-8 rounded-3xl border border-line/20 bg-surface/60 p-6 md:grid-cols-2 md:p-10">
-              <div>
-                <SectionHead align="start" title={content.t("nfc.video.title")} sub={content.t("nfc.video.sub")} />
-              </div>
-              <video className="aspect-video w-full rounded-2xl border border-line/20 bg-black" controls preload="metadata" src={videoUrl}>
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </Reveal>
-        </section>
-      ) : null}
+
 
       <section className="container-x pb-24">
         <Reveal>
@@ -123,6 +119,34 @@ export default async function NfcCardsPage() {
             <div className="mt-7 flex justify-center">
               <WhatsAppOrderButton payload={{ kind: "general" }} phone={settings.whatsapp_number} label="Talk to FLUXMEDIA" variant="brand" />
             </div>
+          </div>
+        </Reveal>
+      </section>
+
+      <section id="nfc-how-to-use" className="container-x pb-20">
+        <Reveal>
+          <div className="grid items-center gap-8 rounded-3xl border border-line/20 bg-surface/60 p-6 md:grid-cols-2 md:p-10">
+            <div>
+              <SectionHead align="start" title={content.t("nfc.video.title")} sub={content.t("nfc.video.sub")} />
+              <p className="mt-4 text-sm leading-relaxed text-muted">
+                Tap the card against the top or back of a compatible phone, open the notification, and share your digital profile. No app is needed.
+              </p>
+            </div>
+            {youtubeVideoId ? (
+              <iframe
+                className="aspect-video w-full rounded-2xl border border-line/20 bg-black"
+                src={`https://www.youtube-nocookie.com/embed/${youtubeVideoId}`}
+                title={content.t("nfc.video.title")}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            ) : (
+              <video className="aspect-video w-full rounded-2xl border border-line/20 bg-black" controls preload="metadata" playsInline src={videoUrl}>
+                Your browser does not support the video tag.
+              </video>
+            )}
           </div>
         </Reveal>
       </section>
