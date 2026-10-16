@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import { PageHero } from "@/components/page-hero";
-import { Icon, Reveal, SectionHead } from "@/components/ui";
+import { Reveal, SectionHead } from "@/components/ui";
 import { WhatsAppOrderButton } from "@/components/whatsapp-button";
 import { CardsBrowser } from "@/components/cards-browser";
 import { getContent } from "@/lib/content/get-content";
@@ -65,17 +65,16 @@ export default async function NfcCardsPage() {
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {examples.map((item, index) => (
               <Reveal key={item.id} delay={index * 70}>
-                <article className="card h-full p-6 transition-transform duration-300 hover:-translate-y-1">
-                  <span className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
-                    <Icon name={["contact", "globe", "calendar-check"][index] ?? "nfc"} className="h-5 w-5" />
-                  </span>
+                <article className="card h-full overflow-hidden p-0 transition-transform duration-300 hover:-translate-y-1">
+                  {L(item.extra, locale).trim() ? (
+                    <img src={L(item.extra, locale)} alt={L(item.title, locale)} loading="lazy" className="aspect-[16/10] w-full object-cover" />
+                  ) : (
+                    <div className="flex aspect-[16/10] items-center justify-center bg-brand/10 text-sm font-semibold text-brand">FLUXMEDIA NFC</div>
+                  )}
+                  <div className="p-6">
                   <h3 className="font-display text-lg font-bold">{L(item.title, locale)}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{L(item.text, locale)}</p>
-                  {L(item.extra, locale).trim() ? (
-                    <a href={L(item.extra, locale)} target="_blank" rel="noreferrer" className="mt-5 inline-flex text-sm font-semibold text-brand hover:underline">
-                      Open example ↗
-                    </a>
-                  ) : null}
+                  </div>
                 </article>
               </Reveal>
             ))}
@@ -100,20 +99,31 @@ export default async function NfcCardsPage() {
         </div>
       </section>
 
-      {videoUrl ? (
-        <section className="container-x pb-20">
-          <Reveal>
-            <div className="grid items-center gap-8 rounded-3xl border border-line/20 bg-surface/60 p-6 md:grid-cols-2 md:p-10">
-              <div>
-                <SectionHead align="start" title={content.t("nfc.video.title")} sub={content.t("nfc.video.sub")} />
-              </div>
-              <video className="aspect-video w-full rounded-2xl border border-line/20 bg-black" controls preload="metadata" src={videoUrl}>
+      <section id="nfc-how-to-use" className="container-x pb-20">
+        <Reveal>
+          <div className="grid items-center gap-8 rounded-3xl border border-line/20 bg-surface/60 p-6 md:grid-cols-2 md:p-10">
+            <div>
+              <SectionHead align="start" title={content.t("nfc.video.title")} sub={content.t("nfc.video.sub")} />
+              <p className="mt-4 text-sm leading-relaxed text-muted">
+                {videoUrl
+                  ? "Watch the short demonstration to see how to tap the card and open the linked profile."
+                  : "The video area is ready. Upload your NFC demonstration video in Admin → Media, then add its public MP4 or WebM URL in Admin → Pages → FLUXMEDIA NFC Cards → How-it-works video URL."}
+              </p>
+            </div>
+            {videoUrl ? (
+              <video className="aspect-video w-full rounded-2xl border border-line/20 bg-black" controls preload="metadata" playsInline src={videoUrl}>
                 Your browser does not support the video tag.
               </video>
-            </div>
-          </Reveal>
-        </section>
-      ) : null}
+            ) : (
+              <div className="flex aspect-video w-full flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-brand/30 bg-brand/5 p-6 text-center">
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand/10 text-2xl text-brand">▶</span>
+                <p className="font-semibold">How to use your NFC card</p>
+                <p className="max-w-sm text-sm text-muted">Add the demonstration video URL in the admin panel to display it here.</p>
+              </div>
+            )}
+          </div>
+        </Reveal>
+      </section>
 
       <section className="container-x pb-24">
         <Reveal>
