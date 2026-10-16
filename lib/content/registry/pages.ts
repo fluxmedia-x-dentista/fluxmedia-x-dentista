@@ -698,6 +698,13 @@ export const pageEntries: ContentEntry[] = [
     ),
   ),
 
+
+  cardsBody.list("cards.promo.items", "Dental promotional products", [
+    { title: ml("Personalised dental mirrors", "Miroirs dentaires personnalisés", "مرايا أسنان مخصصة"), text: ml("Compact promotional mirrors customised with your clinic name and visual identity. Price: ask us on WhatsApp.", "Petits miroirs promotionnels personnalisés avec le nom et l’identité visuelle de votre cabinet. Prix : contactez-nous sur WhatsApp.", "مرايا ترويجية صغيرة مخصصة باسم عيادتك وهويتها البصرية. السعر: تواصل معنا عبر واتساب."), extra: ml("", "", "") },
+    { title: ml("Business-card mirrors with QR code", "Miroirs format carte avec QR code", "مرايا بحجم بطاقة الأعمال مع رمز QR"), text: ml("A practical giveaway that combines a mirror with a QR code linking to your clinic, booking page or social profiles. Price: ask us on WhatsApp.", "Un objet utile qui associe un miroir à un QR code vers votre cabinet, vos rendez-vous ou vos réseaux sociaux. Prix : contactez-nous sur WhatsApp.", "هدية عملية تجمع المرآة مع رمز QR يربط بعيادتك أو صفحة الحجز أو حساباتك الاجتماعية. السعر: تواصل معنا عبر واتساب."), extra: ml("", "", "") },
+    { title: ml("Custom QR promotional mirrors", "Miroirs promotionnels QR personnalisés", "مرايا ترويجية مخصصة برمز QR"), text: ml("Add your logo and a scannable QR code to help patients find your clinic details quickly. Price: ask us on WhatsApp.", "Ajoutez votre logo et un QR code scannable pour aider les patients à retrouver rapidement les informations du cabinet. Prix : contactez-nous sur WhatsApp.", "أضف شعارك ورمز QR قابل للمسح ليجد المرضى معلومات العيادة بسرعة. السعر: تواصل معنا عبر واتساب."), extra: ml("", "", "") }
+  ], "Upload product images in Admin → Media, then paste the public image URL into each product's Extra field. Edit the description to update the displayed price."),
+
   /* ------------------------- FLUXMEDIA NFC page -------------------------- */
   nfcHero.text("nfc.hero.badge", "Badge", ml("FLUXMEDIA NFC Cards", "Cartes NFC FLUXMEDIA", "بطاقات FLUXMEDIA NFC")),
   nfcHero.text("nfc.hero.title1", "Headline line 1", ml("One Tap.", "Une seule touche.", "لمسة واحدة.")),
