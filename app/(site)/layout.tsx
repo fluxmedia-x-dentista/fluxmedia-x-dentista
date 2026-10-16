@@ -28,10 +28,23 @@ export default async function SiteLayout({
       getSiteSettings(),
     ]);
 
-  const items: NavItem[] = navigation.map((item) => ({
-    label: L(item.label, locale),
-    href: item.href,
-  }));
+  // Keep old database navigation entries working while presenting the new brand names.
+  const items: NavItem[] = navigation.map((item) => {
+    if (item.href === "/cards" || item.href === "/dentista") {
+      return { label: "DENTISTA", href: "/dentista" };
+    }
+    if (item.href === "/nfc-cards") {
+      return { label: "NFC Cards", href: "/nfc-cards" };
+    }
+    return { label: L(item.label, locale), href: item.href };
+  });
+
+  if (!items.some((item) => item.href === "/dentista")) {
+    items.push({ label: "DENTISTA", href: "/dentista" });
+  }
+  if (!items.some((item) => item.href === "/nfc-cards")) {
+    items.push({ label: "NFC Cards", href: "/nfc-cards" });
+  }
 
   return (
     <>
