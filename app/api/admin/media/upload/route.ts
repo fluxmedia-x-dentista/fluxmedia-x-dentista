@@ -14,8 +14,10 @@ const ALLOWED = [
   "image/webp",
   "image/svg+xml",
   "image/gif",
+  "video/mp4",
+  "video/webm",
 ];
-const MAX_BYTES = 5 * 1024 * 1024;
+const MAX_BYTES = 50 * 1024 * 1024;
 
 const EXTENSIONS: Record<string, string> = {
   "image/png": "png",
@@ -23,6 +25,8 @@ const EXTENSIONS: Record<string, string> = {
   "image/webp": "webp",
   "image/svg+xml": "svg",
   "image/gif": "gif",
+  "video/mp4": "mp4",
+  "video/webm": "webm",
 };
 
 export async function POST(request: Request) {
@@ -54,7 +58,7 @@ export async function POST(request: Request) {
   }
   if (file.size > MAX_BYTES) {
     return NextResponse.json(
-      { error: "File is larger than 5 MB" },
+      { error: "File is larger than 50 MB" },
       { status: 400 },
     );
   }
