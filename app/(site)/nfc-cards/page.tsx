@@ -142,10 +142,14 @@ export default async function NfcCardsPage() {
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
               />
-            ) : (
+            ) : videoUrl ? (
               <video className="aspect-video w-full rounded-2xl border border-line/20 bg-black" controls preload="metadata" playsInline src={videoUrl}>
                 Your browser does not support the video tag.
               </video>
+            ) : (
+              <div className="flex aspect-video items-center justify-center rounded-2xl border border-dashed border-line/30 bg-surface2/50 p-6 text-center text-sm text-muted">
+                {content.t("nfc.video.empty")}
+              </div>
             )}
           </div>
         </Reveal>
