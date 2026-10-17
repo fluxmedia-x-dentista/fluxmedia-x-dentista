@@ -29,7 +29,7 @@ export default async function NfcCardsPage() {
   const cards = allCards.filter((card) => card.type === "nfc");
   const examples = content.list("nfc.examples.items");
   const steps = content.list("nfc.process.steps");
-  const videoUrl = content.t("nfc.video.url").trim() || "https://www.youtube.com/watch?v=yF30GpgPs_U";
+  const videoUrl = content.t("nfc.video.url").trim();
   const youtubeVideoId = videoUrl.includes("youtube.com/watch?v=")
     ? videoUrl.split("v=")[1]?.split("&")[0]
     : videoUrl.includes("youtu.be/")
@@ -52,21 +52,21 @@ export default async function NfcCardsPage() {
         sub={content.t("nfc.hero.sub")}
       >
         <div className="mt-5 flex flex-wrap gap-3">
-          <a href="#nfc-products" className="btn-brand">Explore NFC cards</a>
-          <a href="#nfc-examples" className="btn-ghost">See examples</a>
+          <a href="#nfc-products" className="btn-brand">{content.t("nfc.hero.cta_primary")}</a>
+          <a href="#nfc-examples" className="btn-ghost">{content.t("nfc.hero.cta_secondary")}</a>
         </div>
       </PageHero>
 
-      <section id="nfc-products" className="container-x py-14">
+      <section id="nfc-products" className={`container-x py-14 ${content.bool("nfc.section.products.visible") ? "" : "hidden"}`}>
         <Reveal>
-          <SectionHead align="start" title="FLUXMEDIA NFC Cards" sub="A smarter way to share your professional identity." />
+          <SectionHead align="start" title={content.t("nfc.products.title")} sub={content.t("nfc.products.sub")} />
         </Reveal>
         <div className="mt-8">
           <Suspense fallback={null}><CardsBrowser cards={cards} phone={settings.whatsapp_number} /></Suspense>
         </div>
       </section>
 
-      <section id="nfc-examples" className="relative py-16">
+      <section id="nfc-examples" className={`relative py-16 ${content.bool("nfc.section.examples.visible") ? "" : "hidden"}`}>
         <div className="pointer-events-none absolute inset-0 -z-10 bg-grid opacity-50" />
         <div className="container-x">
           <Reveal>
@@ -92,9 +92,9 @@ export default async function NfcCardsPage() {
         </div>
       </section>
 
-      <section className="container-x py-16">
+      <section className={`container-x py-16 ${content.bool("nfc.section.process.visible") ? "" : "hidden"}`}>
         <Reveal>
-          <SectionHead title={content.t("nfc.process.title")} />
+          <SectionHead title={content.t("nfc.process.title")} sub={content.t("nfc.process.sub")} />
         </Reveal>
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {steps.map((step, index) => (
@@ -111,25 +111,25 @@ export default async function NfcCardsPage() {
 
 
 
-      <section className="container-x pb-24">
+      <section className={`container-x pb-24 ${content.bool("nfc.section.final.visible") ? "" : "hidden"}`}>
         <Reveal>
           <div className="rounded-3xl border border-brand/25 bg-surface/60 p-8 text-center sm:p-12">
-            <h2 className="section-title">Ready to make every introduction count?</h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted">Tell us what you want your NFC card to open and we’ll help you choose the right setup.</p>
+            <h2 className="section-title">{content.t("nfc.final.title")}</h2>
+            <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted">{content.t("nfc.final.sub")}</p>
             <div className="mt-7 flex justify-center">
-              <WhatsAppOrderButton payload={{ kind: "general" }} phone={settings.whatsapp_number} label="Talk to FLUXMEDIA" variant="brand" />
+              <WhatsAppOrderButton payload={{ kind: "general" }} phone={settings.whatsapp_number} label={content.t("nfc.final.cta")} variant="brand" />
             </div>
           </div>
         </Reveal>
       </section>
 
-      <section id="nfc-how-to-use" className="container-x pb-20">
+      <section id="nfc-how-to-use" className={`container-x pb-20 ${content.bool("nfc.section.video.visible") ? "" : "hidden"}`}>
         <Reveal>
           <div className="grid items-center gap-8 rounded-3xl border border-line/20 bg-surface/60 p-6 md:grid-cols-2 md:p-10">
             <div>
               <SectionHead align="start" title={content.t("nfc.video.title")} sub={content.t("nfc.video.sub")} />
               <p className="mt-4 text-sm leading-relaxed text-muted">
-                Tap the card against the top or back of a compatible phone, open the notification, and share your digital profile. No app is needed.
+                {content.t("nfc.video.instructions")}
               </p>
             </div>
             {youtubeVideoId ? (
