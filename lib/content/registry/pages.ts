@@ -730,6 +730,21 @@ export const pageEntries: ContentEntry[] = [
     { title: ml("Choose your card", "Choisissez votre carte", "اختر بطاقتك"), text: ml("Select the finish and share your branding.", "Choisissez la finition et partagez votre identité visuelle.", "اختر الخامة وشارك هويتك البصرية."), extra: ml("", "", "") },
     { title: ml("Set your destination", "Définissez la destination", "حدد الوجهة"), text: ml("Choose the profile, website or link the card should open.", "Choisissez le profil, le site ou le lien à ouvrir.", "اختر الملف أو الموقع أو الرابط الذي ستفتحه البطاقة."), extra: ml("", "", "") },
     { title: ml("Tap and connect", "Touchez et connectez", "المس واتصل"), text: ml("A compatible phone opens your link; no app is needed.", "Un téléphone compatible ouvre votre lien, sans application.", "يفتح هاتف متوافق الرابط دون تطبيق."), extra: ml("", "", "") }
+
   ]),
+  nfcHero.text("nfc.hero.cta_primary", "Primary button label", ml("Explore NFC cards", "Découvrir les cartes NFC", "اكتشف بطاقات NFC")),
+  nfcHero.text("nfc.hero.cta_secondary", "Secondary button label", ml("See examples", "Voir les exemples", "شاهد الأمثلة")),
+  nfcBody.bool("nfc.section.products.visible", "Show NFC products section", true),
+  nfcBody.text("nfc.products.title", "NFC products section title", ml("FLUXMEDIA NFC Cards", "Cartes NFC FLUXMEDIA", "بطاقات FLUXMEDIA NFC")),
+  nfcBody.area("nfc.products.sub", "NFC products section description", ml("A smarter way to share your professional identity.", "Une façon plus intelligente de partager votre identité professionnelle.", "طريقة أذكى لمشاركة هويتك المهنية.")),
+  nfcBody.bool("nfc.section.examples.visible", "Show examples section", true),
+  nfcBody.bool("nfc.section.process.visible", "Show how-it-works steps section", true),
+  nfcBody.area("nfc.process.sub", "How-it-works section description", ml("From choosing your card to sharing your profile in seconds.", "Du choix de votre carte au partage de votre profil en quelques secondes.", "من اختيار بطاقتك إلى مشاركة ملفك في ثوانٍ.")),
+  nfcBody.bool("nfc.section.video.visible", "Show video section", true),
+  nfcBody.area("nfc.video.instructions", "Video instructions text", ml("Tap the card against the top or back of a compatible phone, open the notification, and share your digital profile. No app is needed.", "Approchez la carte du haut ou de l'arrière d'un téléphone compatible, ouvrez la notification et partagez votre profil numérique. Aucune application n'est nécessaire.", "قرّب البطاقة من أعلى أو خلف هاتف متوافق، وافتح الإشعار لمشاركة ملفك الرقمي. لا حاجة إلى تطبيق.")),
+  nfcBody.bool("nfc.section.final.visible", "Show final call-to-action section", true),
+  nfcBody.text("nfc.final.title", "Final call-to-action title", ml("Ready to make every introduction count?", "Prêt à marquer chaque rencontre ?", "هل أنت مستعد لجعل كل لقاء مميزاً؟")),
+  nfcBody.area("nfc.final.sub", "Final call-to-action description", ml("Tell us what you want your NFC card to open and we’ll help you choose the right setup.", "Dites-nous ce que votre carte NFC doit ouvrir et nous vous aiderons à choisir la bonne configuration.", "أخبرنا بما تريد أن تفتحه بطاقة NFC وسنساعدك في اختيار الإعداد المناسب.")),
+  nfcBody.text("nfc.final.cta", "Final button label", ml("Talk to FLUXMEDIA", "Contacter FLUXMEDIA", "تواصل مع FLUXMEDIA")),
 
 ];
