@@ -741,6 +741,7 @@ export const pageEntries: ContentEntry[] = [
   nfcBody.bool("nfc.section.process.visible", "Show how-it-works steps section", true),
   nfcBody.area("nfc.process.sub", "How-it-works section description", ml("From choosing your card to sharing your profile in seconds.", "Du choix de votre carte au partage de votre profil en quelques secondes.", "من اختيار بطاقتك إلى مشاركة ملفك في ثوانٍ.")),
   nfcBody.bool("nfc.section.video.visible", "Show video section", true),
+  nfcBody.text("nfc.video.empty", "Message shown when no video is set", ml("Add your how-it-works video URL in the admin dashboard.", "Ajoutez l’URL de votre vidéo explicative dans le tableau de bord.", "أضف رابط فيديو الشرح من لوحة التحكم.")),
   nfcBody.area("nfc.video.instructions", "Video instructions text", ml("Tap the card against the top or back of a compatible phone, open the notification, and share your digital profile. No app is needed.", "Approchez la carte du haut ou de l'arrière d'un téléphone compatible, ouvrez la notification et partagez votre profil numérique. Aucune application n'est nécessaire.", "قرّب البطاقة من أعلى أو خلف هاتف متوافق، وافتح الإشعار لمشاركة ملفك الرقمي. لا حاجة إلى تطبيق.")),
   nfcBody.bool("nfc.section.final.visible", "Show final call-to-action section", true),
   nfcBody.text("nfc.final.title", "Final call-to-action title", ml("Ready to make every introduction count?", "Prêt à marquer chaque rencontre ?", "هل أنت مستعد لجعل كل لقاء مميزاً؟")),
